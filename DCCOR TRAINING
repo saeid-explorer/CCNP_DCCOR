@@ -80,3 +80,14 @@
     - Destination VTEP gonna decapsulate it and get the packet
     - Fragmentaion is not supported by VXLAN
     - Remember increasing MTU
+
+
+** VXLAN Control Plane - Flood and Learn
+    - VXLAN lacks a native, dedicated Control Plane, instead it relies on Flood and Learn
+    - Traffic is flooded via Multicast across the backbone to all VTEPs
+    - Once a destination is learned, the ingress VTEP can forward as unicast
+    * BUM(Broadcast, Unknown Unicast, Multicast) Traffic will be sent using  Multicast tree
+    - IR(Ingress Replication) is where we have Unicast Backplane
+      - it's an alternative method of control plane(for Multicast) which is rarely used
+      - we have to manually map VNI to VTEP which takes lots of work
+      - we gonna replicate lots of traffic
