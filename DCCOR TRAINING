@@ -68,4 +68,15 @@
           to scale this architecture out) to be able to scale out. Otherwise in L2 connections STP gonna cause lot of problems
         - In this case, we can have two hosts on two different Leaf switches which are in the same VLAN. Then we can have these
           subnets stretched out(L2) because they are in the same VLAN and yet our Fabric is L3
-          
+
+
+
+** VXLAN Data Plane
+    - VXLAN gonnna extend L2 over L3 using Encapsulation
+    - The L2 Frame gonna come to source VTEP. Then it will be encapsulated into VXLAN Header
+    - Then it will be encapsulated inside UDP Header which has Destination Port of 4789
+    - Then It will be encapsulated into IP Header which has Source and Destination IP of Source and Destination VTEPs
+    - Then it will send the Encapsulated packet over L3 to the destination VTEP
+    - Destination VTEP gonna decapsulate it and get the packet
+    - Fragmentaion is not supported by VXLAN
+    - Remember increasing MTU
