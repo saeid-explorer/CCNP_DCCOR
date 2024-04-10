@@ -1,0 +1,37 @@
+======================================================CCNP DCCOR==================================================
+
+** VXLAN and VNI
+  - There are some problems in traditional Data Centers
+    - Vlans are limited (4K)
+    - We have to use STP, FHRP, VPC which have their own problems
+    - We have to use L3 PODs (L3 at edge) which are problematic
+
+ - VXLAN helps us to better scale our network by two primary ways
+    1) It will increase the number of Broadcast Domains that are available to us
+    2) It's gonna extend L2 over L3
+
+ - When we enable VXLAN on a switch, it's become known as VTEP(VXLAN Tunneling EndPoint)
+ - One VLAN is going to be mapped to a single VNI(Virtual Network Identifier)
+ - Then each VNI is going to be extended through a L3 boundary and connect to another VTEP which receives the 
+   VNIs which has encapsulated the traffic that VXLAN enabled us to send.
+ - Then the destination VTEP is going to translate VNI back into the individual VLANs that were originally
+   connecting with.
+
+ - VXLAN header is a 8 Byte header
+    - 1B -> Flags
+    - 3B -> VNI (almost 16Million VLANs)
+    - 4B -> Reserved
+
+  - Scoping the VNIs
+    - There are two primary ways of scoping VNIs
+      1) Network Scope
+      2) Local Scope(locally significant VNI)
+      
+      - Network-wide scope means that if we were to apply a VNI to a particular VLAN, the question we're
+        going to ask is whether this VNI is significant only to the local switch or to the entire Network.
+      - Scoping Network-wide means that the specific VNI will also get mapped to the same Vlan on the
+        destination VTEP
+      - Benefit of Network-wide Scoping is that it's SIMPLE(i.e. VNI gonna point to the same VLAN in the
+        entire Network)
+      - Downside of Network-wide Scoping is Management. Because we have to be a worry about that the specific
+        VNI is reserved everywhere and we can't repurpose that VNI by accident anywhere in the Network.
