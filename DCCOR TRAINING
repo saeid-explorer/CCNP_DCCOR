@@ -35,3 +35,37 @@
         entire Network)
       - Downside of Network-wide Scoping is Management. Because we have to be a worry about that the specific
         VNI is reserved everywhere and we can't repurpose that VNI by accident anywhere in the Network.
+
+
+** VXLAN and Leaf-Spine
+  - Leaf-Spine is only doable because we have VXLAN
+
+  - Leaf-Spine Architecture
+    - We have two layers: 1st layer is Spine and 2nd layer is Leaf
+    - we connect every leaf switch to every upstream spine switch
+      - we don't connect leaf-to-leaf or spine-to-spine(unline Aggregation-Access Architecture)
+    - All of the Intelligence lives at the LEAF layer, not the Spine layer
+    - The Spine switch has only one task: to bring traffic in and send back out which enables us to switch traffic
+      between Leaf swtiches as fast as possible
+    - Leaf-Spine is designed for scaling to very large L2 Fabric in the DataCenters today
+
+  - Leaf-Spine Scaling
+    1) we have Independent Scaling of different resources in the data center
+        - we have a Backbone layer(Spine Layer) and if we want to increase our Bandwidth or PPS(Packets Per Second),
+          we add new Spine Layer Switch
+        - If we need Ports(additional connectivity at the Edge), we simply add Leaf switches
+    2) Declaring Two-Hop behaviour for all Traffic in Data Center
+        - When a packet arrives on a Leaf Switch, it's guaranteed that regardless of where it's heading in the Data Center,
+          it's going to get there in precisely 2 Hops(first to Spine and then to the destination Leaf Swtich)
+
+    3) Services
+        - We can make our Network Services available very seamlessly throughout the Infrastructure
+        - We bring our services(Network Load Balancers, Cloud Gateways, NGFW, AnyCast Gateways) into a pair of leaf switches
+
+
+  - Application of VXLAN in Leaf-Spine Architecture
+        - The ideal situation in Leaf-Spine Architecture is that the connections between Leaf to Spine to be L3(to be able
+          to scale this architecture out) to be able to scale out. Otherwise in L2 connections STP gonna cause lot of problems
+        - In this case, we can have two hosts on two different Leaf switches which are in the same VLAN. Then we can have these
+          subnets stretched out(L2) because they are in the same VLAN and yet our Fabric is L3
+          
