@@ -1,13 +1,28 @@
-====================================================================================== CCNP DCCOR ================================================================================
+====================================================================================== CCNP DCCOR - CBT Nuggets - Jeff Kish ================================================================================
 
 
 ~~~~~~~~~~~~~~~~~ Explain BGP Concepts~~~~~~~~~~~~~~~~
+
+** BGP Concepts
   - BGP is an EGP(Exterior Gateway Protocol)
   - EGP is designed to be used between larger networks versus IGP(Interior Gateway Protocl) which is designed to be used within a network(e.g. OSPF)
   - IGPs are mode for speed(They converge rapidly) compared to EGPs which focus on Scale
   - IGPs are Distance Vector or Link State protocols but BGP is Path Vector protocol 
   - BGP has 10+ path attributes which are used for routing
 
+** BGP Peerings
+  - AS(Autonomous System) is 16bit number which accounts for 65K AS
+  - There are two types of Peerings:
+    - eBGP: peering between routers in different ASs
+      - AD(Administrative Distance) is 20
+    - iBGP: peering which happens within an AS
+      - AD(Administrative Distance) is 200
+  - BGP peerings are formed across a TCP connection on port 179
+    - This means two routers without a direct connection can still form relationship
+  - Peers are identified by a Router ID(32bit)
+    - Router ID can be assigned manually or Automatically(using the highest Loopback IP or highest other Interface IP address)
+  
+  
 
 
 
