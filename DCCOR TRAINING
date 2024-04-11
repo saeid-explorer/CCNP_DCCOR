@@ -73,9 +73,33 @@
           - address-family ipv6
 
 
+~~~~~~~~~~~~~~~~~ Explain Multicast Routing ~~~~~~~~~~~~~~~~
 
+** Multicast Traffic Concepts
+  - we have three components
+      - Multicast source
+      - Multicast receiver
+      - Group Address: A class D IP Address that we are sending this multicast traffic stream to
+        - Class D Address is in the range of: 224.0.0.0 to 239.255.255.255
+        - 239.0.0.0 is the range of private multicast group IDs
+  - different types of multicast traffic groups:
+        1) Any-Source Multicast(ASM)
+            - It's the situation in which we don't care which Source gives us the traffic stream
+        2) Source-Specific Multicast(SSM)
+            - Allows us to reach out to very specific source on the network and request the source that way
+            - It greatly simplifies our multicast deployment because the host knows where exactly the source is
+        3) BiDirectional
+            - Designed for the situations when we have a lot of sources and a lot of recipients
 
-~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN~~~~~~~~~~~~~~~~
+  - L2 and L3 Multicast
+      - L3 Multicast is going to be managed by a protocol called PIM(Protocol Independent Multicast)
+          - The goal of PIM is to create Loop-free topology through the entire network that we call it Tree
+          - This tree is going to connect the sources to the destinations in a loop-free way inside the network
+      - L2 Multicast uses IGMP(Internet Group Management Protocol)
+          - IGMP is a protocol that allows clients to request connections to specific multicast streams
+          - We can also use a concept called IGMP Snooping in order to prevent Broadcast behaviour
+
+~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
   - There are some problems in traditional Data Centers
