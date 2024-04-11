@@ -91,3 +91,11 @@
       - it's an alternative method of control plane(for Multicast) which is rarely used
       - we have to manually map VNI to VTEP which takes lots of work
       - we gonna replicate lots of traffic
+
+
+** VXLAN Control Plane - Ethernet VPN (EVPN)
+    - BGP is more of a Information Carrying Protocol(rather than simply a Routing Protocol)
+    - MP-BGP(Multi-Protocol BGP) can carry IPv6, MPLS or even MAC and VNI
+    - EVPN deploys MP-BGP to exchange IP/MAC/VNI info among VTEPs   
+    - EVPN brings enhancements like Peering(Authentication) and ARP Suppression(Prevent flooding ARP Requests)
+    - BUM traffic continues to use Multicast for multi-VTEP delivery
