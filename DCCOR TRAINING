@@ -64,6 +64,14 @@
           - the lower the better
 
 
+** MP-BGP (MultiProtocol BGP)
+  - BGP can route IPv4 and IPv6
+  - BGP is an Information Carrying protocol which can protocol lots of information types(e.g. IPv4/IPv6 Multicast, Mac Address)
+  - we set the protocol that we want to carry as a subcommand under "router bgp <As#>" command
+      - e.g.:
+        - router bgp 65500
+          - address-family ipv6
+
 
 
 
