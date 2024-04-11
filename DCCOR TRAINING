@@ -1,4 +1,21 @@
-======================================================CCNP DCCOR==================================================
+====================================================================================== CCNP DCCOR ================================================================================
+
+
+~~~~~~~~~~~~~~~~~ Explain BGP Concepts~~~~~~~~~~~~~~~~
+  - BGP is an EGP(Exterior Gateway Protocol)
+  - EGP is designed to be used between larger networks versus IGP(Interior Gateway Protocl) which is designed to be used within a network(e.g. OSPF)
+  - IGPs are mode for speed(They converge rapidly) compared to EGPs which focus on Scale
+  - IGPs are Distance Vector or Link State protocols but BGP is Path Vector protocol 
+  - BGP has 10+ path attributes which are used for routing
+
+
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
   - There are some problems in traditional Data Centers
@@ -21,6 +38,7 @@
     - 1B -> Flags
     - 3B -> VNI (almost 16Million VLANs)
     - 4B -> Reserved
+
 
   - Scoping the VNIs
     - There are two primary ways of scoping VNIs
@@ -81,6 +99,12 @@
     - Fragmentaion is not supported by VXLAN
     - Remember increasing MTU
 
+   - MTU increase required on the VXLAN underlay network
+      - IP header       -> 20B
+      - UDP header      -> 8B
+      - VXLAN header    -> 8B
+      - Ethernet header -> 14
+      - So totally we should add 50 Bytes to the size of Data packet to get our MTU size
 
 ** VXLAN Control Plane - Flood and Learn
     - VXLAN lacks a native, dedicated Control Plane, instead it relies on Flood and Learn
@@ -96,6 +120,10 @@
 ** VXLAN Control Plane - Ethernet VPN (EVPN)
     - BGP is more of a Information Carrying Protocol(rather than simply a Routing Protocol)
     - MP-BGP(Multi-Protocol BGP) can carry IPv6, MPLS or even MAC and VNI
-    - EVPN deploys MP-BGP to exchange IP/MAC/VNI info among VTEPs   
+    - EVPN deploys MP-BGP to exchange IP/MAC/VNI info among VTEPs
+    - BGP should also include a RR(Route Reflector) as part of EVPN designs
     - EVPN brings enhancements like Peering(Authentication) and ARP Suppression(Prevent flooding ARP Requests)
     - BUM traffic continues to use Multicast for multi-VTEP delivery
+
+
+~~~~~~~~~~~~~~~~~ ----------------------- ~~~~~~~~~~~~~~~~
