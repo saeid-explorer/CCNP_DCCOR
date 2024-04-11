@@ -21,10 +21,47 @@
     - This means two routers without a direct connection can still form relationship
   - Peers are identified by a Router ID(32bit)
     - Router ID can be assigned manually or Automatically(using the highest Loopback IP or highest other Interface IP address)
-  
-  
 
 
+** BGP Path Selection
+  - Note: Path must be Reachable
+  - Here are path selection criteria/attributes sorted by their priority:
+      1) Weight
+          - the higher the better
+          - Cisco-only parameter
+          - specifically local to the router
+      2) Local Preference
+          - the higher the better
+          - it's globally shared within an AS
+          - in other words, it's a weight that is shared
+      3) Locally Originated
+          -  prefer the local path to the neighbors' advertised path
+      4) AS-PATH
+          - the less/shorter the better
+          - for example AS-path 400 wins over AS-Path 200-300
+      5) Origin
+          - the lower the better
+          - Origin explains how a Route got into BGP in the first place
+            - for example we might use the "Network" command which injects the route natively into BGP (marked by "i" in Routing Table)
+            - we might also see "?"(i.e. Incomplete) in Routing table which means the Route is redistributed into BGP 
+            - so "i" Origin is prefered over "?" Origin
+      6) MED(Multi-Exit Discriminator)
+          - the lower the better
+          - it's actual cost or metric that we get in BGP
+          - this is used to tell others how to come back into my network
+          - for example when I have a Router on the Edge of my AS and I have 2 different Paths 2 different Routers in a different AS,
+            I can use MED to influence the inboud direction of the packet
+      7) eBGP > iBGP Peer
+          - Routes received from eBGP peers are preferred over iBGP Routes
+      8) Next-Hop - IGP Metric 
+      9) Last chosen
+      10) Peer Router-ID (Optional)
+          - the lower the better
+      11) Cluster Length
+          - the lower the better
+          - Relates to RR(Route Reflector)
+      12) Peer IP Address
+          - the lower the better
 
 
 
