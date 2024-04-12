@@ -146,6 +146,37 @@
       - The RP will install (S,G) Route in its Multicast Routing table
       - Then the RP will bind (*,G) Routes with (S,G) Routes and send the Multicast Stream to the given Clients in the specific Group
 
+
+** PIM Roles
+    1) Rendevouz Point(RP)
+        - Contact for connecting the Sources and Receivers
+        - We can Statically set any Router as RP or we can Automatically set a Router as RP in one of two following ways:
+            1) Auto-RP
+                - deployed by Cisco
+                - based on SPARSE-DENSE Approach of PIM which is now obsolete in the Data Centers 
+            2) BSR(BootStrap Router)
+                - it's included with PIMv2
+                - It's industry standard that's built-into PIM now
+                - It uses PIM messaging sent to 224.0.0.13
+                - BSR is a Mapping Agent(MA). It accepts all the messages from the Routers that want to be RP and sends those messages to 
+                  the rest of the network via native PIM messaging
+            3) Anycast RP
+                - It leverages the concept of Anycast
+                - It's going to use exact same IP Address on two different Routers
+                - Here we have redundancy
+                - The two routers(with same IP) use a protocol called MSDP(Multicast Source Discovery Protocol) to communicate with each other
+                  to allow each other to know about any Sources that they become aware of. This way we have one Synchronized database of Sources
+                  between two RPs
+    2) PIM DR(Designated Router)
+      - This is when we have two Routers in one network segment
+      - PIM DR is the Router that is responsible for sending client join Requests to the upstream Router
+      - it's elected based on the highest IP Address on that subnet
+    3) PIM DF(Designated Forwarded)
+      - if we receive a Multicast Stream on two different Routers that are on the same Segment which should forward the Stream to Downstream device(Router/Client)
+      - PIM DF is responsible for forwaring this Multicast Stream
+      - In this case the two competing routers are going to enter into a process called PIM ASSERT
+      - The Router which wins the PIM ASSERT process gonna forward the Multicast Stream
+
 ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
