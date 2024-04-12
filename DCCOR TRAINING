@@ -134,6 +134,17 @@
     - These Modes are going to be how we discover where the Sources are 
 
 
+** PIM SPARSE Mode Operation
+  - Rendevous Point(RP): This is going to be the contact for both the Sender and the Receivers
+  - We are going to call a Router as RP and it will be known by every single router in the network
+  - So every Router(Sender&Receiver) inform RP about their Needs/Requests
+  - If the receiver shows up first:
+      - Receiver will send a join request to its upstream Router and that router sends the join request to RP to join a specific Multicast group(e.g. 239.1.1.1)
+      - RP gonna install (*,G) entry in its Multicast Routing table
+  - If the Source show up:
+      - It will ask RP for sending a Multicast traffic for specific Multicast group
+      - The RP will install (S,G) Route in its Multicast Routing table
+      - Then the RP will bind (*,G) Routes with (S,G) Routes and send the Multicast Stream to the given Clients in the specific Group
 
 ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
