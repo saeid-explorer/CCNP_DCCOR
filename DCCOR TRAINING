@@ -99,6 +99,23 @@
           - IGMP is a protocol that allows clients to request connections to specific multicast streams
           - We can also use a concept called IGMP Snooping in order to prevent Broadcast behaviour
 
+
+
+** Protocol Independent Multicast(PIM)
+  - PIM's responsibility is to connect the Sources with whatever clients want to receive that particular Multicast stream
+  - It's protocol independent because we're relying on a Unicast Routing Protocol to already have been established for us to have
+    converged routing(e.g. OSPF, EIGRP) in the Unicast Environment
+  - PIM's domain of operation is from Ingress router to Egress router
+  - Its responsible for L3 domain of Multicast
+  - PIM routers should start by forming PIM neighborship with one another
+  - Routers are going to discover each other with a multicast IPv4 address of 224.0.0.13 on IPv6 of FF02::D
+  - Multicast Routes are created when a new Source shows up and sends Multicast or when a Receiver shows up and want to join a particular Multicast group
+  - command to show Multicast Routing Table:
+      - show ip mroute
+  - 2 different types of Multicast routes on Multicast Routing Table
+      - "S" stands for Source, "G" stands for Group, "*" means we don't know what the source is
+      1) (S,G)
+      2) (*,G)
 ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
