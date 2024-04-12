@@ -115,7 +115,26 @@
   - 2 different types of Multicast routes on Multicast Routing Table
       - "S" stands for Source, "G" stands for Group, "*" means we don't know what the source is
       1) (S,G)
+          - They are going to be established before (*,G) group in many cases as going to tell us what to do when we finally see where the source lives
+          - e.g.: (10.1.1.1, 239.1.1.1)
       2) (*,G)
+          - These Routes are kind of like Template that tell us what to do when the (S,G) Routes finally arrived
+          - If the client first sends a Join request(to join a Multicast group) to the router
+          - Once the router received the request, it's gonna build (*,G) entry into the Multicast Routing Table(e.g. (*,239.1.1.1) )
+          - Note: with any Multicast Route, we need to identify Incoming Interface(II) and the Outgoing Interface List(OIL)
+          - for (*,G) Routes, II is always "NULL" because in this case we don't have a Source
+
+  - 2 Operation Modes of PIM
+      1) DENSE Mode
+          - has a Flood and Prune methodology(Flood the traffic and Prune it back)
+          - We don't use DENSE Mode onto Cisco Nexus operations
+      2) SPARSE Mode
+          - On the Cisco Data Center we have only Sparse Mode available to us
+          - It's going to use a lot of Intelligence to figure out where those Sources are
+    - These Modes are going to be how we discover where the Sources are 
+
+
+
 ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
