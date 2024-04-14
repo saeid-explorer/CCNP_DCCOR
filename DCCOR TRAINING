@@ -177,6 +177,44 @@
       - In this case the two competing routers are going to enter into a process called PIM ASSERT
       - The Router which wins the PIM ASSERT process gonna forward the Multicast Stream
 
+
+
+
+** PIM Configuration
+    - We have two types of configuration to do:
+      1) Global Configuration
+          # Feature pim
+          # ip pim rp-address
+      2) Interface-level Configuration
+          # ip pim sparse-mode
+          - To enable Authentication
+            # ip pim hello-authentication ah-md5 <password>
+          - To make a specific Router to be DR
+            # ip pim dr-priority
+          - To configure Auto-RP and select a Router as RP candidate
+            # ip pim auto-rp rp-candidate
+          - To configure BSR and select a Router as RP candidate
+            # ip pim rp-candidate
+          - To configure a Router to be as MA(Mapping Agent) in Auto-RP
+            # ip pim auto-rp mapping-agent
+          - To configure a Router to be as BSR in BSR mode
+            # ip pim bsr-candidate
+          - To enable the forwarding of RP related traffic on Auto-RP mode
+            # ip pim auto-rp listen forward
+          - To enable the forwarding of RP related traffic on BSR mode
+            # ip pim bsr listen forward
+
+    - show Multicast Routing Table
+          - show ip mroute
+
+    - show pim info on interface level
+          - show ip pim neighbor
+          - show ip pim interface
+
+    - flush all Multicast Routes out and restart all pim adjacencies
+          
+          
+
 ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
