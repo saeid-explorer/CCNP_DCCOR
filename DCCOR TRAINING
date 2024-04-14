@@ -244,6 +244,11 @@
         # ip igmp join-group
           or
         # ipv6 mld join-group
+    - Validating commands
+        # show ip igmp interface
+        # show ipv6 mld interface
+        # show ip igmp snooping groups
+        # show ipv6 mld snooping statistics int vlan <vlan#>
 
 ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
