@@ -213,7 +213,37 @@
 
     - flush all Multicast Routes out and restart all pim adjacencies
           
-          
+
+
+** IGMP and MLD
+    - The role of IGMP is to allow the hosts to request for participating a particular Multicast Group
+    - The role of MLD is the same as IGMP but for IPv6
+    - host/client gonna send a request for joining the Multicast Group. This request is called "IGMP Report" and its destined to the Multicast Group Address(e.g. 239.1.1.1)
+    - IGMP Querier
+      - if we have more than one Router, the router with lower IP Address will be IGMP Querier 
+    - IGMP has two versions that are supported on Cisco Nexus Switch
+      - IGMP v2
+      - IGMP v3
+        - supports SSM(Source-Specific Multicast). i.e. when the host sends IGMP Report, it says from which Source it wants to receive Multicast Stream
+    
+    - MLD has two versions that are supported on Cisco Nexus Switch
+      - MLD v1
+      - MLD v2
+        - supports SSM
+
+    - IGMP Snooping
+      - Multicast in layer 2 acts like broadcast, so we use IGMP Snooping to make it act like Multicast
+      - using IGMP Snooping, the switch sends the Multicast Streams only to the hosts that have requested
+
+
+** IGMP and MLD Configuration
+    # feature pim/pim6
+    - under the interface
+        # ip pim sparse-mode
+        # ip igmp version 3
+        # ip igmp join-group
+          or
+        # ipv6 mld join-group
 
 ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
