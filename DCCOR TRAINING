@@ -250,6 +250,18 @@
         # show ip igmp snooping groups
         # show ipv6 mld snooping statistics int vlan <vlan#>
 
+
+
+~~~~~~~~~~~~~~~~~ Explain Virtual Port Channel ~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
 ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
