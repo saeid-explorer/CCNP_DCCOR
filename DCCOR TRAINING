@@ -309,7 +309,20 @@
 
     * Note: FHRPs run in an Active/Active state to resolve black hole scenarios
 
+** VPC and STP
+    - In normal operation, the VPC Primary handles BPDUs on VPCs
+    - Peer-Switch is a concept which means two VPC switch peer in order to be considered one logical switch
+    - Using Peer-Swtich, the peers share a bridge ID for VPC links and that enables both of them to send and receive BPDUs
+    - Peer-Switch is designed for when one of the peers is STP Root
 
+** VPC Topologies
+    - Bow-Tie
+      - it's a topology in which two downstream switch connect to two upstream routers using VPC
+      - we have two paris of switches
+      - The link between the pairs is L2
+
+    * Note: L3 adjacencies to the VPC peers should not be formed over a VPC
+    * Note: Use dedicated L3 links when routing adjacencies to the peers are required
 
 
 ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
