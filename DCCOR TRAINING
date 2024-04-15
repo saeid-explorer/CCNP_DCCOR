@@ -253,7 +253,40 @@
 
 
 ~~~~~~~~~~~~~~~~~ Explain Virtual Port Channel ~~~~~~~~~~~~~~~~
+  
+  - Nexus Port-channels are different from IOS devices
+  - Configuration options are static(ON) and LACP(active/passive)
+  - Load-balancing across port-channel links is hash-based
 
+  * Note: In VPC we can only support exactly 2 upstream Nexus Switch
+  * Note: VPC is only L2
+
+  * VPC Domain
+    - it is assigned a unique number inside your datacenter environment
+
+  * Peers
+    - Two Nexus devices in the VPC domain are called PEERS
+    - one of the devices is Primary Peer and the other is Secondary Peer
+
+  * KeepAlive Link
+    - it's going to be a dedicated connection between peers that is part of its own VRF
+    - This should be a L3 connection
+    - Peers will send KeepAlive messages to one another to make sure whether the other side is up
+
+  * Peer-Link
+    - it's a connection between peers
+    - peers will use this link for control plane information
+    - Control Plane uses a Protocol called CFS(Cisco Fabric Services)
+    - any VLAN that we extend along a VPC must be included on the Peer-Link
+    - The general practice is not to restrict VLANs on the Peer-Link
+
+  * VPC Member Ports
+    - The ports that are part of VPC
+
+  * VPC Orphan Ports
+    - Any port in a VPC environment that aren't part of VPC
+
+  * VPCs give us the resiliency and storage connections needs in the DC
 
 
 
