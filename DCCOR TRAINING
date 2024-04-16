@@ -324,8 +324,38 @@
     * Note: L3 adjacencies to the VPC peers should not be formed over a VPC
     * Note: Use dedicated L3 links when routing adjacencies to the peers are required
 
-
-~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
+** Configuring a VPC Domain
+    - do the following configuration on both Nexus Switches:
+      - feature vpc
+      - vpc domain <a unique number>
+      - peer-keepalive destination <destination IP of keepalive link> source <Source IP of keepalive link>
+    - to validate the config use the following command and check "vPC keep-alive status"
+      - show vpc
+     - Go inside the interface of peer-link on both Switches
+      - int <interface_number>
+          - switch mode trunk
+          - channel-group <number> mode <on/active>
+      - Go to the port-channel that you've created
+        - int port-channel <number>
+          - vpc peer-link
+      - To validate the peer-link, see if "peer status" is "peer adjacency formed ok" using following command
+        - show vpc
+      - Go to the interfaces that you want to configure as the members of vPC ports to downstream swtich
+        - int <interface_name>
+          - switchport mode trunk
+          - channel-group <number> mode active
+              * Note: you should enable LACP feature first(i.e "feature lacp")
+      - Then go to the newly created port-channel
+        - int port-channel <number>
+          - vpc <number>
+              *Note: for the human-readability it's better to match vpc and port-channel number of vPC member ports
+      - Then go to downstream switch(e.g. Catalyst) and enter into ports that will join the vPC
+        - int range <interface range>
+          - switchport trunk encapsulation dot1q
+          - switchport mode trunk
+          - channel-group <number> mode passive
+           
+  ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
   - There are some problems in traditional Data Centers
