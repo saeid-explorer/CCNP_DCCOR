@@ -373,8 +373,19 @@
           means it's still configured as secondary, but it's acting as if it's primary
 
       3) Peer-link is UP, but KeepAlive links are Down
-        - we have the solve KeepAlive link problem right away, but it's not going to affect Data Plane Operations
+        - we have to solve KeepAlive link problem right away, but it's not going to affect Data Plane Operations
 
+** Configuring VPC Roles
+    - to make a nexus switch to be VPC Primary, use the priority command and set it to a lower priority, and set the secondary swith to have higher priority
+    - e.g.:
+      (in primary switch)
+      - vpc domain <domain_number>
+        - role priority 10
+      (in secondary switch)
+      - vpc domain <domain_number>
+        - role priority 20
+    * Note: we should either shut down vpc links and "no shut" them again or do the following to take effect:
+        - vpc role preempt
   ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
