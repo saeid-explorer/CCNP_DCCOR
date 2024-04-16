@@ -354,7 +354,27 @@
           - switchport trunk encapsulation dot1q
           - switchport mode trunk
           - channel-group <number> mode passive
-           
+
+** VPC Roles and Failover
+    - one of the Nexus VPC switches will be Primary and the other will be Secondary
+    - Primary and Secondary roles will be determined via an Election
+    - To see the role of each Nexus switch
+      - show vpc role
+    - Election will be done one time when vPC domain comes up
+    - Election will be based on Priority and Mac Address
+    - There is no Preemption. It means if the primary failed, it won't get Primary again after comming up
+
+    * Failure Scenarios
+      1) Peer-Link is down, but KeepAlive link is up
+        - In this case, the secondary switch will shut its vpc link down
+
+      2) Peer-Link and KeepAlive links are both DOWN
+        - In this case, secondary switch will keep its VPC up and it will assume the role of operational primary, it
+          means it's still configured as secondary, but it's acting as if it's primary
+
+      3) Peer-link is UP, but KeepAlive links are Down
+        - we have the solve KeepAlive link problem right away, but it's not going to affect Data Plane Operations
+
   ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
