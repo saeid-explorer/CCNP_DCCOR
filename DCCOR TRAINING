@@ -386,6 +386,22 @@
         - role priority 20
     * Note: we should either shut down vpc links and "no shut" them again or do the following to take effect:
         - vpc role preempt
+
+
+** VPC Configuration Options
+
+  * ARP Syncronization
+    - This gonna make sure that we're dynamically and actively/proactively exchanging ARP entries of the Nexus Switches with one another
+    - That way in a failure event, we don't have to re-ARP for bunch of entries that we weren't even using before the failure
+    - We should enable ARP Sync in VPC domain
+
+  * Auto Recovery
+    - It's one of those configuration parameters that is actually enabled by default
+    - In Auto Recovery we gonna wait for 240 seconds(i.e. 4min) in hope that the other failed switch(primary) comming online
+        - if the other failed switch didn't came up in 240 seconds, the switch will take the Primary role
+
+  * Peer Gateway
+    - It extends FHRP black hole prevention to SVIs 
   ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
