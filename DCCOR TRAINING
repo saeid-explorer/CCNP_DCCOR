@@ -394,6 +394,9 @@
     - This gonna make sure that we're dynamically and actively/proactively exchanging ARP entries of the Nexus Switches with one another
     - That way in a failure event, we don't have to re-ARP for bunch of entries that we weren't even using before the failure
     - We should enable ARP Sync in VPC domain
+    - The command to enable it
+      - vpc domain <number>
+        - ip arp synchronize
 
   * Auto Recovery
     - It's one of those configuration parameters that is actually enabled by default
@@ -401,7 +404,10 @@
         - if the other failed switch didn't came up in 240 seconds, the switch will take the Primary role
 
   * Peer Gateway
-    - It extends FHRP black hole prevention to SVIs 
+    - It extends FHRP black hole prevention to SVIs
+    - The command to enable it
+      -  vpc domain <number>
+        - peer-gateway
   ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
