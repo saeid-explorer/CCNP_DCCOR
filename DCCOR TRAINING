@@ -408,6 +408,20 @@
     - The command to enable it
       -  vpc domain <number>
         - peer-gateway
+
+
+
+  ~~~~~~~~~~~~~~~~~ Describe Data Center FHRPs ~~~~~~~~~~~~~~~~
+
+** First Hop Redundancy Protocols(FHRPs)
+    - these protocols gonna give us redundancy for our network first hops
+    - using these protocols we can have two gateways for our clients and assign a single VIP for the gateways
+    - Protocols:
+      - HSRP(Hot Standby Router Protocol) 
+        - Cisco proprietory
+
+
+
   ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
