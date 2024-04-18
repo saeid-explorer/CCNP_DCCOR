@@ -414,12 +414,27 @@
   ~~~~~~~~~~~~~~~~~ Describe Data Center FHRPs ~~~~~~~~~~~~~~~~
 
 ** First Hop Redundancy Protocols(FHRPs)
-    - these protocols gonna give us redundancy for our network first hops
+    - these protocols allow for network-based gateway redundancy
     - using these protocols we can have two gateways for our clients and assign a single VIP for the gateways
     - Protocols:
       - HSRP(Hot Standby Router Protocol) 
         - Cisco proprietory
+        - two versions: v1(original version), v2(optimized version)
+        - default version of HSRP on Cisco NX-OS is v1
 
+      - VRRP(Virtual Router Redundancy Protocol)
+        - It's industry/open standard
+        - versions: v1(obsolete), v2 and v3
+        - default version of VRRP on NX-OS is v2
+
+      - GLBP(Gateway Load Balancing Protocol)
+        - Cisco proprietory
+        - it's focus is on load balancing
+        - it's supported on Nexus 7K but not on Nexus 9K
+
+
+
+** Hot Standby Router Protocol(HSRP)
 
 
   ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
