@@ -436,6 +436,64 @@
 
 ** Hot Standby Router Protocol(HSRP)
 
+  - In HSRP we will have groups containing routers
+  - groups will be configured on Interface
+  - Each group will be assigned an ID
+  - Each router will be placed in one of these states:
+    - Active
+    - Standby
+    - Listen
+
+  * Priority
+    - it's a configurable value in the range of 0-255
+    - Default is 100
+    - If the priority of the routers is the same, the router with "Highest IP Address" wins(becomes Active Router)
+
+  * Timers
+    - The routers send messages to one another
+    - sending these messages is according to "Hello Timer"
+    - Hello Timer is by default 3 seconds
+    - Hold Timer is by default 10 seconds
+    - Hold Timers says us how long we can go without receiving a hello message before we assume the other side is down
+    * Note: we can use BFD(Bidirectional Failure Detection) algorithm to detect the failures even sooner (down to 50ms)
+
+  * Preemption
+    - it needs to be enabled if I want a router to dynamically take over(become Active router) for example as a result of changing priority value
+    - It's disabled in HSRP by default
+
+  * Security
+    - Authentication
+      - we can for authentication between routers inside a HSRP group
+      - The password can be in two froms
+        - Plain text
+        - MD5
+
+  * HSRP v2
+    - It has the possibility of more group IDs(4096)
+    - We are able to tune our timers down to Millisecond range(as low as 250ms)
+    - Multicast address is going to change
+      - In HSRP v1, Multicast Address is 224.0.0.2
+      - In HSRP v2, Multicast Address is 224.0.0.102 
+
+  * Note: HSRP is Active/Active in VPC topologies
+
+
+** Virtual Router Redundancy Protocol(VRRP)
+    - Unlike HSRP, the roles are:
+      - Master
+      - Backup
+
+    - Priority
+      - in the range of 1-254
+
+    - VIP
+      - we can select the IP address of Master as VIP
+
+    - Preemption
+      - is enabled by default
+
+    - Group ID
+      - In both VRRP v2 and v3 there are 256 Group IDs
 
   ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
