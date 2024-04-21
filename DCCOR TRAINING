@@ -508,7 +508,18 @@
       - when a problem is detected, the device will decrement its priority
       - in this case we expect the backup/standby router to take over the Master/Active Role
       - preemption should be enabled
-      
+
+
+** Configuring HSRP
+    - first enable the feature on Nexus Switch
+      - feature hsrp
+    - then configure hsrp on the interface as the following example
+      - int vlan 1
+        - hsrp version 2
+        - hsrp 1
+          - ip 192.168.1.254 (VIP)
+    - hsrp verification
+      - show hsrp brief
   ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
