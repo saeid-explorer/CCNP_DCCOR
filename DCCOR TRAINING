@@ -518,6 +518,19 @@
         - hsrp version 2
         - hsrp 1
           - ip 192.168.1.254 (VIP)
+    - to change priority and turning Preemption on
+      - int vlan 1
+        - hsrp 1
+          - priority 110
+          - preempt
+
+    - to change Hello time and Hold time(e.g. 1s for Hello time and 3s for Hold time)
+      - int vlan 1
+        - hsrp 1
+          - timers 1 3
+
+    - to change Hello time and Hold time(e.g. 250msec for Hello time and 750ms for Hold time)
+          
     - hsrp verification
       - show hsrp brief
   ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
