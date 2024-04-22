@@ -558,6 +558,17 @@
           - preempt
 
     * Note: When configuring VRRP to use a rouer's physical IP address (as VIP), the priority value of 255 is automatically assigned
+
+
+
+~~~~~~~~~~~~~~~~~ Explain Overlay Transport Virtualization(OTV) ~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
   ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
