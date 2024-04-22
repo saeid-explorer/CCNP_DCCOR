@@ -563,6 +563,33 @@
 
 ~~~~~~~~~~~~~~~~~ Explain Overlay Transport Virtualization(OTV) ~~~~~~~~~~~~~~~~
 
+  ** OTV Architecture
+    - OTV is designed to extend L2 to many different locations across L3 boundaries (Data Plane Operation)
+    - It relies on IS-IS routing protocol to do what is called as MAC Routing (Control Plane Operation)
+
+    * Join Interface
+      - It's physical or logical interface that connects us to our L3 Network(It's where IP Address lives)
+
+    * Internal Interfaces
+      - They are usually L2 extensions(usually Trunk connections) to the rest of the Data Center(Where hosts and all the entities on Internal network connect to)
+
+    * Overlay Interface
+      - It's a logical Tunneling interface that's going to exist on the Edge device
+      - This is how we are going to form our tunnels across the L2 boundary
+      - we are going to form a tunnel between the overlay interfaces of two edge devices on different Data Centers
+      - They don't have IP addresses set on them, instead they borrow the IP of Join Interfaces for source and destination of OTV Tunnel
+      - The tunnel is going to carry L2 Frame inside L3 Packet
+
+    - The Cisco Platforms which support OTV
+      - Nexus 7K
+        - The Line Cards must be either M series or F3 or above 
+        - We need to deploy a seperate VDC in order to accomplish this
+        - OTV itself requires a seperate License
+
+      - ASR 1000
+      - CSR1000V
+      - ISR 4K 
+      
 
 
 
