@@ -533,6 +533,29 @@
           
     - hsrp verification
       - show hsrp brief
+
+
+** Configuring VRRP
+    - first enable the feature on Nexus Switch
+      - feature vrrp
+        or
+      - feature vrrp3
+
+    - then configure vrrp on the interface as the following example
+      - int vlan 3
+        - vrrp 3
+          - address 192.168.3.254 (VIP)
+          - no shut
+            - we have to do no shut, unless vless won't get enabled
+
+     - vrrp verification
+      - show vrrp
+
+    - to change priority and turning Preemption on
+      - int vlan 3
+        - vrrp 3
+          - priority 110
+          - preempt
   ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
