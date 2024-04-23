@@ -611,9 +611,20 @@
   - BUM(Broadcast, Unknown Unicast, Multicast) traffic is also sent via unicast to all destinations if transport is unicast
   - With a multicast transport, BU traffic is sent via control-group ASM(Any Source Multicast) address
   - Multicast(L2) traffic uses SSM(Source-Specific Multicast), which requires IGMPv3 on the Join Interface
-  - 
 
 
+
+** Multihoming and Authoritative Edge Devices(AEDs)
+  - BPDUs are not propagated across the OTV overlay
+  - One of the devices in each DataCenter/Subnet will be assigned as AED for a particular VLAN 
+  - AED is going to affect both Control Plane and Data Plane
+  - In Control Plane perspective, A device will only advertise the MAC addresses for a VLAN if it's the AED for that VLAN
+    - Also The device will only send the traffic to it's VLAN, if only it's the AED for that VLAN
+  - VLANs are automatically mapped based on evens and odds
+  - Backdoor links will require manual configuration
+  - Site-VLAN
+    - it has to be a dedicated VLAN that connects two AEDs as directly as possible
+  - The AEDs can also become backup AED for other Vlans 
   ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
