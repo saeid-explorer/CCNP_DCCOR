@@ -589,7 +589,20 @@
       - ASR 1000
       - CSR1000V
       - ISR 4K 
-      
+
+
+
+** OTV Control Plane
+  - IS-IS routing protocol is used in OTV Control Plane
+  - IS-IS is often used on Service Provider space
+  - IS-IS can carry any type of information
+  - IS-IS is based on TLV(Type,Length,Value) fields(i.e. we don't have to carry Routes, we can carry MAC Addresses)
+  - Cisco is going to do the IS-IS config for us on the backend(automated by OTV)
+    - we can also manually set Timers or Authentication
+  - OTV shares updates as MAC addresses are learned and pulled
+  - each devices will advertise the MAC addresses in its CAM table to the other devices
+  - Adjacencies are formed via the control-group Multicast address ideally
+  - For unicast transports, we use adjacency servers to form adjacencies
 
 
 
