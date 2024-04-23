@@ -606,7 +606,12 @@
 
 
 
-
+** OTV Data Plane
+  - Unicast traffic is handled via unicast in the transport network
+  - BUM(Broadcast, Unknown Unicast, Multicast) traffic is also sent via unicast to all destinations if transport is unicast
+  - With a multicast transport, BU traffic is sent via control-group ASM(Any Source Multicast) address
+  - Multicast(L2) traffic uses SSM(Source-Specific Multicast), which requires IGMPv3 on the Join Interface
+  - 
 
 
   ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
