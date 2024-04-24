@@ -625,6 +625,17 @@
   - Site-VLAN
     - it has to be a dedicated VLAN that connects two AEDs as directly as possible
   - The AEDs can also become backup AED for other Vlans 
+
+
+** OTV Design Considerations
+    - ARP Optimization
+      - reduces flooding behavior of ARP between sites
+    - OTV adds 42Bytes to MTU(MTU becomes 1542Bytes)
+    - OTV sets DNF(Do Not Fragment) bit in a packet
+    - FHRP Isolation
+      - We have to create VACL(Vlan Access Control List) and block FHRP Mac Addresses between FHRPs on two different Data Centers
+      - FHRP Nodes both become Active and we gonna have AnyCast Gateway
+  
   ~~~~~~~~~~~~~~~~~ Explain VXLAN and EVPN ~~~~~~~~~~~~~~~~
 
 ** VXLAN and VNI
