@@ -814,3 +814,26 @@
     - verification
       # show otv adjacency
       # show otv route
+
+
+
+** Configuring OTV FHRP Blocking
+    - blocking FHRP using VACL(VLAN Access Control List)
+      # ip access-list FHRP_IP 
+          # permit udp any 224.0.0.2/32 eq 1985  -> HSRP v1
+          # permit udp any 224.0.0.102/32 eq 1985 -> HSRP v2
+          # permit 112 any 224.0.0.18/32
+      # ip access-list IP_ALL
+
+    # vlan access-map BLOCK_FHRP_VACL 10
+       # match ip address FHRP_IP
+       # action drop
+       # exit
+
+    # vlan access_map BLOCK_FHRP_VACL 20
+      # match ip address IP_ALL
+      # action forward
+      # exit
+
+    # vlan filter BLOCK_FHRP_VACL vlan-list 10-20
+        
