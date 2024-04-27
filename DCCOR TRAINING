@@ -837,3 +837,18 @@
 
     # vlan filter BLOCK_FHRP_VACL vlan-list 10-20
         
+  - Configure Mac Advertisement
+    # mac-list OTV_FHRP_MAC seq 10 deny 0000.0c07.ac00 ffff.ffff.ff00
+    # mac-list OTV_FHRP_MAC seq 20 deny 0000.0c9f.f000 ffff.ffff.f000
+    # mac-list OTV_FHRP_MAC seq 30 deny 0000.5e00.0100 ffff.ffff.ff00
+    # mac-list OTV_FHRP_MAC seq 40 permit 0.0.0 0.0.0
+
+    # route-map OTV_FHRP_MAC_RM permit 10
+      # match mac-list OTV_FHRP_MAC_RM
+      # exit
+
+    # otv-isis default 
+
+    # vpn overlay0
+      # redistribute filter route-map OTV_FHRP_MAC_RM
+      # exit
