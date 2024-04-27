@@ -766,7 +766,7 @@
 
 
 - Configuring Internal and Join Interfaces of OTV on Cisco Nexus 7K
-  - Go to the L2 interface facing the upstream CSR1000v and configure it as JOIN interface
+  - Go to the L3 interface facing the upstream CSR1000v and configure it as JOIN interface
     # int e2/1
       # ip add 10.0.0.2/30
       # mtu 9216
