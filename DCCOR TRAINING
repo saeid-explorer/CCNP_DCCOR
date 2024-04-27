@@ -787,3 +787,30 @@
 
       
 ** Configuring OTV
+  - configuration on Nuxus 7K
+    - Global Configuration
+      # feature otv
+      # otv site-vlan 5
+        # exit
+      # otv site-identifier Ox1
+        - site identifier is always the same for all of the devices in a particular location
+
+    - Interface-level Configuration(for Multicast)
+      # int overlay 0
+        # otv join-interface eth2/1
+        # otv control-group 239.1.1.1
+        # otv data-group 232.1.1.0/28
+        # otv extend-vlan 10-20
+        # no shut
+
+    - Interface-level Configuration(for Unicast)
+      # int overlay 0
+        # otv join-interface eth2/1
+        # otv adjacency-server unicast-only
+        # otv use-adjacency-server 10.0.0.2
+        # otv extend-vlan 10-20
+        # no shut
+
+    - verification
+      # show otv adjacency
+      # show otv route
