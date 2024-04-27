@@ -747,4 +747,43 @@
     - BUM traffic continues to use Multicast for multi-VTEP delivery
 
 
-~~~~~~~~~~~~~~~~~ ----------------------- ~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~ Configure Overlay Transport Protocol(OTV) ~~~~~~~~~~~~~~~~
+
+** Setting up the OTV Environment
+- Configurations on the device on the transit environment of OTV(e.g. CSR1000v)
+  - configure multicast routing on the device on the transit environment of OTV(e.g. CSR1000v)
+      # ip muticast-routing distributed
+  
+    - Assign an IP address to it's multicast port
+      # ip pim rp-address 1.1.1.1
+  
+    - enable pim sparse-mode on loopback interface
+      # ip pim sparse-mode
+      # ip address 1.1.1.1 255.255.255.255
+
+    - enable igmp version 3 on the interfaces towards two other downstream devices(e.g. Nexus 7K)
+      # ip igmp version 3
+
+
+- Configuring Internal and Join Interfaces of OTV on Cisco Nexus 7K
+  - Go to the L2 interface facing the upstream CSR1000v and configure it as JOIN interface
+    # int e2/1
+      # ip add 10.0.0.2/30
+      # mtu 9216
+      # ip igmp version 3
+      # no shut 
+
+  - Go to the interface facing the Local Network and configure it as Internal interface
+    # int e2/2
+      # switchport mode trunk
+      # switchport trunk allowed vlan 10-20
+      # no shut
+      # exit
+
+  - Create vlans
+    # vlan 10-20
+    # vlan 5
+    # exit
+
+      
+** Configuring OTV
