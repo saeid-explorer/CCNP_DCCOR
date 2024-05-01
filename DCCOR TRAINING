@@ -934,4 +934,9 @@
 
     - verification of NVE/VNI association
         # show nve vni
-    
+
+
+
+~~~~~~~~~~~~~~~~~ Configure Ethernet VPN (EVPN) ~~~~~~~~~~~~~~~~
+
+** Configuring EVPN
