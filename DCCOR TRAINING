@@ -672,7 +672,7 @@
         destination VTEP
       - Benefit of Network-wide Scoping is that it's SIMPLE(i.e. VNI gonna point to the same VLAN in the
         entire Network)
-      - Downside of Network-wide Scoping is Management. Because we have to be a worry about that the specific
+      - Downside of Network-wide Scoping is Management. Because we have to be worry about that the specific
         VNI is reserved everywhere and we can't repurpose that VNI by accident anywhere in the Network.
 
 
@@ -852,3 +852,86 @@
     # vpn overlay0
       # redistribute filter route-map OTV_FHRP_MAC_RM
       # exit
+
+~~~~~~~~~~~~~~~~~ Configure VXLAN ~~~~~~~~~~~~~~~~
+
+** Setting up the VXLAN Environment
+  - Configuring CSR1000v(as Spine Switch)
+      - enabling multicast routing and setting pim RP(Rendevouz Point) IP
+          # ip multicast-routing distributed
+          # ip pim rp-address 10.1.1.100
+      
+      - Set pim-mode to sparse on the interfaces
+          # ip pim sparse-mode
+
+      - increase MTU(considering Jumbo frames and VXLAN header)
+          # int eth1/1
+            # mtu 9216
+
+  - Configuring Nexus 9K (as Leaf Switch)
+      - increase MTU(considering Jumbo frames and VXLAN header)
+          # int eth1/1
+            # mtu 9216
+
+      - enable Multicast
+          # feature pim
+
+      - set RP(Rendevouz Point) to be upstream CSR1000v Router
+          # ip pim rp-add 10.1.1.100
+
+      - Set pim-mode to sparse on the interfaces
+          # ip pim sparse-mode
+
+      - configure vlans and place downstream ports on vlans
+          # vlan 10,20
+
+          # int eth1/1
+            # switchport access vlan 10
+            # switchport mode access
+            # no shut
+
+          # int eth1/2
+            # switchport access vlan 20
+            # switchport mode access
+            # no shut
+
+
+** Configuring VXLAN
+  - Configuration Cisco Nexus 9K as Leaf Swtiches
+    * Note: we should convert our Nexus 9Ks to VTEP(Virtual Tunnelling Endpoint)
+      - To do that, we should configure NVE(Network Virtualization Edge) Interface
+      - Then we map the VNI to either a physical or virtual interface(e.g. Loopback)
+      - This for example loopback interface, is the interface that we use to form our VXLAN relationship/Tunnel
+      - So, because NVE doesn't have an IP address itself, it will use loopback's IP address as source/destination of Tunnel
+
+    - Enable VXLAN configuration
+      # feature nv overlay
+      # feature vn-segment-vlan-based
+
+    - mapping VLANs to VNIs
+      # vlan 10
+        # vn-segment 100000
+        # exit
+
+      # vlan 20
+        # vn-segment 200000
+        # exit
+
+    - verification command for vlan-VNI mapping
+        # show vxlan
+
+    - create NVE interface and set an interface as a member of VNI and set multicast group IP
+        # int nve1
+          # source-interface loopback 0 (loopback interface should have already configured with an IP Address)
+          # member vni 100000
+            # mcast-group 239.1.1.1
+          # member vni 200000
+            # mcast-group 239.1.1.2
+          # no shut
+
+    - verification of NVE peers
+        # show nve peers
+
+    - verification of NVE/VNI association
+        # show nve vni
+    
