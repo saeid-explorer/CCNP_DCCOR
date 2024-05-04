@@ -940,3 +940,91 @@
 ~~~~~~~~~~~~~~~~~ Configure Ethernet VPN (EVPN) ~~~~~~~~~~~~~~~~
 
 ** Configuring EVPN
+  - EVPN is a control plane protocol for VXLAN which uses BGP
+  
+  - Configuring CSR1000v as upstream Spine switch
+    # router bgp 65000
+      # neighbor 10.0.0.2 remote-as 65000 (neighbors are two downstream nexus switches as leaf switches)
+      # neighbor 10.0.0.6 remote-as 65000
+      # address-family ipv4
+        # neighbor 10.0.0.2 activate
+        # neighbor 10.0.0.6 activate
+        # neighbor 10.0.0.2 route-reflector-client (this is to configure CSR1000v as an RR for two Neighbors(Nexus Swtich))
+        # neighbor 10.0.0.6 route-reflector-client
+
+  - Configure two Nexus 9k Switches as Leaf
+    # int loopback 1
+      # ip address 1.1.1.1/32
+      # no shut
+      # exit
+
+    # feature bgp
+
+    # router bgp 65000
+      # address-family ipv4 unicast
+        # network 1.1.1.1/32
+        # exit
+      # neighbor 10.0.0.1
+        # remote-as 65000 
+        # address-family ipv4 unicast
+        # exit
+
+  - Configuring CSR1000v as upstream Spine switch
+    # router bgp 65000
+      # address-family l2vpn evpn
+        * Note: l2vpn address-family carries all of the EVPN information(IP/MAC)
+        # neighbor 10.0.0.2 activate
+        # neighbor 10.0.0.6 activate
+        # neighbor 10.0.0.2 route-reflector-client
+        # neighbor 10.0.0.6 route-reflector-client
+        * Note: Community Attributes are the Attributes which allow tag a route with any kind of value that effectively tells another router what to do
+                witch that route
+        * Note: EVPN relies on Extended Community Attributes
+        # neighbor 10.0.0.2 send-community extended
+        # neighbor 10.0.0.6 send-community extended
+
+
+  - Configure two Nexus 9k Switches as Leaf
+    * Note: In order to have access to that L2VPN BGP Address-family, we actually need to enable EVPN control plane option for us
+      # nv overlay evpn
+
+    * Note: RD(Route Distinguisher) make a Route unique within the BGP table
+    * Note: RT(Route Target) tells us where to send the unique Routes
+            - Targets are determined by a TAG. We are going to export the route with a particular Tag so that we can Import that particular Route
+              with a Tag on the other side
+            - Whitin the world of EVPN, we can use the concept of Auto. Auto works within IBGP and Cisco derives as their own RD and RT based on internal values
+    # vni 100000 L2
+      # rd auto
+      # route-target import auto
+      # route-target export auto
+      # exit
+
+    # vni 200000 L2
+      # rd auto
+      # route-target import auto
+      # route-target export auto
+      # exit
+
+    # int nve1
+      # host-reachability protocol bgp
+      # no shut
+      # exit
+
+    # router bgp 65000
+      # address-family l2vpn evpn
+      # neighbor 10.0.0.1
+        # address-family l2vpn evpn
+          # send-community extended
+          # exit
+
+  - Configuring CSR1000v as upstream Spine switch
+      - disable multicast
+        # int gig1
+          # no ip pim sparse-mode
+        # int gig2
+          # no ip pim sparse-mode
+
+  - verification command for EVPN
+      # show l2route evpn mac all
+      
+      
