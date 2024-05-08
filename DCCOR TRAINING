@@ -1045,5 +1045,13 @@
   - Loop Prevention
     - doesn't happen automatically, so we have to be very cautious specially on VXLAN environment
     - some preventive mechanisms such as BPDU GUARD are needed
-  - VPC
-    - 
+
+** VXLAN and VPC
+  - VXLAN configuration must match identically between the peers
+  - VPC optional configurations are now required
+    - Peer switch
+    - Peer gateway
+    - Arp synchronization
+  - Failures are handled similarly, but consider upstream L3 failure
+    - we can deploy L3 connection between our VTEPs
+  - we can test resiliency with "system mode maintenance" command
