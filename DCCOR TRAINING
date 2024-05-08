@@ -1055,3 +1055,27 @@
   - Failures are handled similarly, but consider upstream L3 failure
     - we can deploy L3 connection between our VTEPs
   - we can test resiliency with "system mode maintenance" command
+
+** VXLAN Multipod and Multisite
+  - Pod in a data center environment is an "availability domain"
+  - Multipod
+    - Multipod is built by merging multiple pods together under one fabric
+    - BGP and EVPN are used
+    - problems:
+      - Scaling
+      - Single Control Plane
+      - We should have a Full Routing Table for all the different VTEPs
+      - BUM traffic
+      - less visibility of traffic
+  - Multisite
+    - each data center is considered to be a Site with some Pods
+    - Border Gateway 
+      - we convert a VTEP(Leaf or Spine switch) into a Border Gateway
+      - Border Gateways terminate VXLAN tunnels from both sides
+      - traffic between the sites are transferred via Border Gateways
+      - using ANYCAST we can have 2 Border Gateways on each site
+    - The following problems(of Multipod) are solved in Multisite
+      - Scaling
+      - Single Control Plane
+      - Visibility
+      - 
