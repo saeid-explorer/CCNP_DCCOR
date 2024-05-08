@@ -1078,4 +1078,24 @@
       - Scaling
       - Single Control Plane
       - Visibility
-      - 
+
+** OTV vs VXLAN
+  - OTV and VXLAN both pass L2 and L3, but they are designed differently
+  - OTV was designed for DCI(Data Center Interconnect) and it still has advantages
+  - VXLAN can be used between VXLAN-enabled data centers
+  - OTV benefits
+    - can operate on a UNICAST service provider network
+    - we can connect the data centers even if we have VXLAN on one side and not on the other
+    - comes with integraded control plane(IS-IS)
+    - can be viewed as a Simple design
+  - OTV Downsides
+    - don't need OTV if we have VXLAN enabled on both sides
+    - we have to worry about the concept of STITCHING(Stitching VNIs to VLANs)
+    - require specialized hardware(e.g. Nexus 7K or ASR1K and not Nexus 9K) and some licensing
+  - Using VXLAN alone
+    - we have to consider full mesh of VXLAN tunnels among all of our different VTEPs
+  - Using VXLAN alongside OTV
+    - we have to fully consider how we exactly map out VNIs to VLANS(Stitching)
+    - This requires a Nexus 7K M3 Blade
+    - We would have to rely on OTV Unicast
+    - We have Scaling limitation of 3 Data Centers
