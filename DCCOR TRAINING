@@ -1028,3 +1028,22 @@
       # show l2route evpn mac all
       
       
+~~~~~~~~~~~~~~~~~ Apply Overlay Protocol ~~~~~~~~~~~~~~~~
+
+** Overlay Design Considerations
+  - Traffic Optimization
+    1) GW
+      - ANYCAST (EVPN)
+      - FHRP Filtering (OTV)
+    2) ARP
+      - Suppression
+
+  - Control Plane
+    - OTV -> IS-IS
+    - VXLAN -> EVPN
+
+  - Loop Prevention
+    - doesn't happen automatically, so we have to be very cautious specially on VXLAN environment
+    - some preventive mechanisms such as BPDU GUARD are needed
+  - VPC
+    - 
