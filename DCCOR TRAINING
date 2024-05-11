@@ -1103,3 +1103,17 @@
 
 
 ~~~~~~~~~~~~~~~~~ Describe ACI Concepts ~~~~~~~~~~~~~~~~
+
+** What is Cisco ACI(Application Centric Infrastructure)?
+  - It's Cisco SDN solution for Data Center
+  - SDN is a software-driven methodology for managing the infrastructure
+    - These are usually going to be managed by Controllers
+    - APIs are used 
+      - REST(http) format - user will use this API
+      - NETCONF API - devices will use this API to talk to each other
+    - Overlay
+      - VXLAN or other tunneling mechanisms are used to deploy Overlay
+      - Underlay is specifically the hardware
+  - The Controller that is used on ACI environment is called APIC(Application Policy Infrastructure Controller)
+    - APIC is going to allow user to configure ACI via GUI or CLI  
+  - ACI is built on the Nexus 9K line of switches
