@@ -1125,3 +1125,15 @@
   - ACI offers simplicity via APIC as a single point of access
 
 
+
+** ACI Automation, Security, and Flexibility
+  - Automation
+    - ACI offers automation via REST APIs
+    - No Human Error
+    - Inefficient to do manual work
+
+  - Security
+    - ACI offers north-south and east-west security
+
+  - Flexibility
+    - ACI offers flexibility by extending policy to both physical and virtual devices
