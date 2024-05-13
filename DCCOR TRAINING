@@ -1152,6 +1152,7 @@
   - Cisco Tools we can leverage to help us begin programming ACI via APIs
     1) DOC
     2) Visore
+       - allow us to learn about the attributes, variables, and DNs(Distinguished Name) of a Managed Object
     3) API Inspector
   * Note: Northbound of the APIC will be user
 
