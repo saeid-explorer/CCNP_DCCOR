@@ -1137,3 +1137,19 @@
 
   - Flexibility
     - ACI offers flexibility by extending policy to both physical and virtual devices
+
+
+
+~~~~~~~~~~~~~~~~~ Describe ACI Manageability ~~~~~~~~~~~~~~~~
+
+** Northbound APIs
+  - APIC is going to be a cluster of usually 3 Cisco UCS servers, however we can even cluster more
+  - The reason of having 3 on a cluster:
+    - we are going to shard the data that's contained by the APIC across all of the different nodes
+    - That is going to provide the resiliency we want on a management layer of ACI
+  - The APIC is exclusively configured via northbound REST APIs
+  - The GUI and CLI both serve as front-ends for the APIs
+  - Cisco Tools we can leverage to help us begin programming ACI via APIs
+    1) DOC
+    2) Visore
+    3) API Inspector
