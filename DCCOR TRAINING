@@ -1176,3 +1176,9 @@
       - e.g.: topology/pod-1/node-105
     - Relative Name(RN) is essentially a DN but shortened down
   - we can use the DN or RN to be called on API call
+
+
+
+
+~~~~~~~~~~~~~~~~~ Describe ACI Components ~~~~~~~~~~~~~~~~
+
