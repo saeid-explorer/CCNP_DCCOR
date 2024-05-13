@@ -1153,3 +1153,25 @@
     1) DOC
     2) Visore
     3) API Inspector
+  * Note: Northbound of the APIC will be user
+
+
+** Southbound APIs
+  - Southbound of APIC would be all of the different devices(Nexus 9Ks)
+  - We are going to use APIs between APIC and N9Ks
+  - OpenFlow was the first industry standard protocol for SDN
+  -  These APIs are gonna built on a protocol called OpFlex created by Cisco
+  * OpFlex
+    - it's an Open Protocol
+    - it's a Declarative model
+
+** ACI Programmability and Object Models
+  - Network Programmability makes us more efficient and effective
+  - Everything(e.g. Interface, VLANs, EPGs(EndPoint Groups)) in ACI is an Object
+  - ACI uses and object model to facilitate API configuration
+  - MGMT Information Model (MIM) is an object-oriented database which includes  MGMT Information Tree(MIT) 
+    - Every one of the nodes on the Tree is called a Managed Object(MO)
+    - Every MO has a Distinguished Name(DN)
+      - e.g.: topology/pod-1/node-105
+    - Relative Name(RN) is essentially a DN but shortened down
+  - we can use the DN or RN to be called on API call
