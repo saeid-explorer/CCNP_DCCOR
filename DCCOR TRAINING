@@ -1225,4 +1225,20 @@
     - 6 Line Cards, 2 Supervisors
   - Cisco 9516
     - 14 Line Cards, 2 Supervisors
-  - 
+  - Supervisor is responsible for Network Functionality(e.g. OSPF, STP)
+  - System Functionality(e.g. Power Mgmt, Temperature sensor) is offloaded to the System Controllers
+  - Supervisors
+    - A+
+      - 4core, 1.8GHz CPU
+      - 16GB RAM
+      - 64GB SSD
+    - B+ 
+      - 6core, 1.9GHz CPU
+      - 24GB RAM
+      - 256GB SSD
+  - Fabric Modules(FM)
+    - The 9500s use a Fablic Module Architecture, with no midplane
+    - each Fabric Modules applies to certain amount of Bandwidth to each Line Card
+    - Fabric Modules is mounted vertically on back of the Chassis and increases the Backbone Bandwidth available to each line card  
+    - we can support up to 6 FMs in a chassis
+    - we need Minimum of 3 FMs
