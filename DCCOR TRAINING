@@ -1188,4 +1188,30 @@
   - The APIC consists of a 3-node UCS cluster
 
 ** Nexus 9500 Line Cards
-  
+  - Cloud Scale
+    - refers to cisco-created silicon, used in modern 9700 line cards
+    - Cisco 9700 series
+    - EX
+    - FX
+      - Telemetry
+      - MACSEC(Hop by Hop)
+      - CloudSEC(VTEP by VTEP)
+        - Encryption on VXLAN Tunnel
+    - GX
+      - 400G Interfaces
+  - R-Series
+    - exists as a merchant silicon option, NX-OS mode only
+    - Cisco  9600 R series
+    - LCs
+    - FMs
+  - Classic
+    - Classic Line Cards used a merchant+ strategy, included the 9400-9700s
+    - Gen1 Line Cards
+      - 9400/9600 series
+      - cannot run on ACI mode
+    - 9500
+      - leaf
+      - ACI enabled
+    - 9700
+      - spine
+      - ACI enabled
