@@ -1215,3 +1215,14 @@
     - 9700
       - spine
       - ACI enabled
+
+** Nexus 9500 Chassis Switches
+  - Cisco 9504
+    - includes 4 line cards(determined by last digit of the model)
+    - 2 Line Cards and 2 Supervisors
+    - 48p, 10G SFP
+  - Cisco 9508
+    - 6 Line Cards, 2 Supervisors
+  - Cisco 9516
+    - 14 Line Cards, 2 Supervisors
+  - 
