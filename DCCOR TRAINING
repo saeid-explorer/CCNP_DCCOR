@@ -1246,3 +1246,11 @@
 
 
 ** Nexus 9300 Fixed-Config Switches
+  - fixed-configuration switch means not-a-chassis-switch
+  - cloud scale
+    - EX
+    - FX
+    - FX2
+    - FX3
+    - GX 
+    - GX2
