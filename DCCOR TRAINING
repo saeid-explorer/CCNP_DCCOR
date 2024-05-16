@@ -1247,7 +1247,8 @@
 
 ** Nexus 9300 Fixed-Config Switches
   - fixed-configuration switch means not-a-chassis-switch
-  - cloud scale
+  - Nexus 9300s work in NX-OS or as ACI spine or leaf, depending on the model
+  - Options/Models
     - EX
     - FX
     - FX2
