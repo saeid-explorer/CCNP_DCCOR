@@ -1181,4 +1181,11 @@
 
 
 ~~~~~~~~~~~~~~~~~ Describe ACI Components ~~~~~~~~~~~~~~~~
+** ACI Architecture
+  * Note: all the Intelligence in Spine-Leaf architecture lives on Leaf layer
+  - The Nexus 9Ks were developed specifically for ACI
+  - Nexus 9Ks can run in NX-OS mode until ready for ACI
+  - The APIC consists of a 3-node UCS cluster
 
+** Nexus 9500 Line Cards
+  
