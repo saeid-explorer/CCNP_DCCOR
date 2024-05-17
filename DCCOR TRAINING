@@ -1262,3 +1262,5 @@
   - There is two sizes: Medium and Large, sized by edge port count
   - APICs have a component called VIC(Virtual Interface Controller) 
     - These VICs are on Cisco UCS servers and are 10/25G SFP interfaces
+  * Note: In order to upgrade a Nexus 9K from NX-OS mode to ACI mode
+    - Complete wipe/reload
