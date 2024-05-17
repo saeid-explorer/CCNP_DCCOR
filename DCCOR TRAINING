@@ -1264,3 +1264,32 @@
     - These VICs are on Cisco UCS servers and are 10/25G SFP interfaces
   * Note: In order to upgrade a Nexus 9K from NX-OS mode to ACI mode
     - Complete wipe/reload
+
+
+~~~~~~~~~~~~~~~~~ Data Center Transcivers ~~~~~~~~~~~~~~~~
+
+** SFP and QSFP Technology
+  * SFP(Small Form factor Plugable)
+    - Smaller than GBICs
+    - 1G(fiber/copper)
+    - RJ45 support
+  * SFP+
+    - 10G
+    - Form Factor similar to SFP
+    - Backward Compatability
+  * QSFP+
+    - 40G
+    - Breakout(convert to 4 x 10G links)
+
+   * Note: SFP+/QSFP+ are outdated transceiver options
+
+  * SFP28
+    - supports 1G, 10G, and 25G connectivity
+    - form factor similar to SFP
+    - It's actually 28G but 3G is consumed by Encoding
+    - RS-FEC Feature
+      - it's a feature on SFP28 interfaces, that if not present, we are limited to 3 Meters
+  * QSFP28
+    - supports 40G, 50G and 100G
+    - it's backward compatible and supports QSFP+ Transcievers
+    -  
