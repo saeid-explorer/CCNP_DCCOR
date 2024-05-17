@@ -1255,3 +1255,10 @@
     - FX3
     - GX 
     - GX2
+
+** Application Policy Infrastructure Controller(APIC)
+  - APIC is the ACI controller for SDN environment
+  - APIC is typically deployed in the cluster of 3, 5 or 7 nodes
+  - There is two sizes: Medium and Large, sized by edge port count
+  - APICs have a component called VIC(Virtual Interface Controller) 
+    - These VICs are on Cisco UCS servers and are 10/25G SFP interfaces
