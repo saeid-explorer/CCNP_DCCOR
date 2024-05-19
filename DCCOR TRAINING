@@ -1292,4 +1292,104 @@
   * QSFP28
     - supports 40G, 50G and 100G
     - it's backward compatible and supports QSFP+ Transcievers
-    -  
+
+
+** 10G and 25 Transceiver Options
+  * 10G SFP+ Modules
+    - SFP-10G-T-X module
+      - connect RJ-45 interfaces at 10G
+    
+    - SFP-10G-SR module
+      - SR stands for Short Range
+      - It's typically on Multi Mode Fiber(MMF)
+      - supports FCoE
+    - SFP-10G-SR-S Module
+      - It's a lower cost option because of its worse Bit Error Rate(BER)  
+      - does not support FCoE
+    - SFP-10G-SR-X Module
+      - It's for extented operating temperature range
+    
+    - SFP-10G-LRM Module
+      - Primary meant for outside of Data Center(campus Environment)
+      - It's on Multi Mode Fiber(MMF) 
+    - FET-10G Module
+      - Only works between Cisco Nexus 9K and 2K
+    - SFP-10G-LR-S Module
+      - LR stands for Long Range Fiber
+      - It's on Single Mode Fiber(SMF)
+      - supports link length of 10 kilometers
+      - does not support FCoE
+    - SFP-10G-LR Module
+      - It's on Single Mode Fiber(SMF)
+      - supports link length of 10 kilometers
+      - supports FCoE
+    - SFP-10G-LR-X Module
+      - It's for extented operating temperature range
+    - SFP-10G-LR10-I
+      - It's meant for Industrial Operating Temperature Range
+
+    - SFP-10G-ER-S Module
+      - supports a link length of up to 40 kilometers
+      - It's on Single Mode Fiber(SMF)
+      - does not support FCoE
+    - SFP-10G-ER Module
+      - supports link length of 40 kilometers
+      - supports FCoE
+    - SFP-10G-ER-I Module
+      - It's meant for Industrial Operating Temperature Range
+
+    - SFP-10G-ZR-S Module
+      - It's cisco-specific
+      - supports link length of up to about 80 kilometers
+      - does not support FCoE 
+    - SFP-10G-ZR Module
+      - supports link length of up to about 80 kilometers
+      - supports FCoE
+
+    - SFP+ Twinax copper cable
+      - also called Direct-Attach Cables(DAC)
+      - suitable for very short distances
+      - offer a cost-effective way to connect within racks  and across adjacent racks
+      - in lengths of 1, 1.5, 2, 2.5, 3, 4, 5 (called passive), or  7 and 10 meters (called active)
+      - EMI(ElectroMagnetic Interference) will affect Twinax
+
+    - SFP+ Active Optical Cable(AOC)
+      - almost similar to Twinax cables
+      - in lengths of 1,2,3,5,7 and 10 meters
+      - EMI won't affect AOC
+
+
+
+  * SFP28 Modules 
+     - Twinax(DAC)
+     - Active Optical Cable(AOC)
+     - 25G Short Reach (SR) Module
+     - 10/25G Long Reach (LR) Module
+     - 10/25G Cisco Short Reach (CSR) Module
+
+
+
+
+** 40GG and 100G Transceiver Options
+  * 40G QSFP Modules
+    - QSFP-40G-SR4-S
+    - QSFP-40G-SR4
+    - QSFP-40G-SR-BD
+
+** QSFP-DD(Double Density) Transceivers
+  - QSFP-DD is backward compatible with QSFP+/QSFP28 transceivers
+  - QSFP-DD400
+    - supports 400G speed
+    - provides 8 lanes of 50G for 400G total
+  - QSFP-DD800
+    - supports 800G speed
+    - provides 8 lanes of 100G for 800G total
+
+** Verify Compatibility with Cisco TMG
+  - check "Cisco Optics-to-Device Compatibility Matrix" or "Transceiver Module Group Compatibility Matrix" to see if the device actually supports module
+  - https://tmgmatrix.cisco.com/
+
+
+
+
+~~~~~~~~~~~~~~~~~ Describe the ACI Logical Model ~~~~~~~~~~~~~~~~
