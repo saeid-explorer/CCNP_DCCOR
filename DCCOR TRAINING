@@ -1393,3 +1393,18 @@
 
 
 ~~~~~~~~~~~~~~~~~ Describe the ACI Logical Model ~~~~~~~~~~~~~~~~
+** Mapping the Logical Models
+  - The logical Model represents how traffic flows through the ACI domain 
+  - EPG(EndPoint Group)
+    - it's a collection of EndPoints
+    - Endpoints in an EPG don't have to be in a same subnet
+    - All of the devices in an EPG can communicate with eath other freely
+    - by default we don't allow any traffic betweeen EndPoints in different EPGs
+    - A Contract defines how EndPoints in two different EPGs can communicate with eath other
+    - Bridge Domain(BD)
+      - can contain a set of components like subnets, GW, EPGs
+    - Context/VRF
+      - each VRF includes some Bridge Domains
+    - Tenant
+      - each Tenant can include some VRFs
+      - ACI is a MultiTenant infrastructure
