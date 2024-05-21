@@ -1438,3 +1438,19 @@
       - The provider tells the Consumer here is how you're allowed to communicate with me
         - the direction of the Traffic in a Contract is from Consumer towards the provider
       - The contract is Unidirectional 
+
+
+** Bridge Domains and Application Network Profiles
+  * Bridge Domain
+    - Bridge Domains represent a Broadcast Domain
+    - Subnets and Anycast Gateways are configured within BDs 
+    - We need Unique Mac Addresses
+    - We have Broadcast Traffic
+    
+
+  * APN(Application Network Profile) OR AP(Application Profile)
+    - contains:
+      - EPGs
+      - Contracts
+      - Service Graphs
+    - ANP represents an Application, and it maps EPGs to BDs
