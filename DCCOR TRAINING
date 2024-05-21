@@ -1408,3 +1408,33 @@
     - Tenant
       - each Tenant can include some VRFs
       - ACI is a MultiTenant infrastructure
+
+
+** Endpoint Groups and Contracts
+  - Cisco EndPoint Types
+    1) Physical Device Types
+    2) Virtual EndPoint(VM, Virtual Appliance, VCenter, ...)
+    3) External Devices(Users)
+
+  - Cisco EndPoint Group Types
+    1) Application
+    2) External(for External Endpoints/Users)
+    3) Micro Segmentation  
+
+  - Ways to assign EndPoints to EndPoint Groups
+    - Physical Port, VLAN
+    - Source IP
+    - Source MAC
+    - VMM Integration
+
+  * Contracts
+    - Contracts allow Inter-EPG traffic
+    - Consists of multiple subjects and filters
+      - each subject includes Filters
+        - Ports, Protocols
+    - We can apply contracts between two EPGs in different Bridge Domains(BD)
+    - We should set the direction of contract
+      - in each contract, there is a Provider and a Consumer of the contract
+      - The provider tells the Consumer here is how you're allowed to communicate with me
+        - the direction of the Traffic in a Contract is from Consumer towards the provider
+      - The contract is Unidirectional 
