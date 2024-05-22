@@ -1457,4 +1457,10 @@
 
 
 ** Contexts and Tenants
-  
+  - ACI Context is equivalent to VRF
+  - Bridge Domains belong to one VRF
+  - Tenant is in Management Layer
+  - Default Tenants inside ACI Infrastructure
+    1) Common: Any construct located here belongs to All Tenants
+    2) Infrastructure: responsible for Leaf-Spine Connectivity
+    3) Management: Handle all of InBand and OutOfBand(OOB) Management Interfaces
