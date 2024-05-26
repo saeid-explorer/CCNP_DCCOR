@@ -1464,3 +1464,59 @@
     1) Common: Any construct located here belongs to All Tenants
     2) Infrastructure: responsible for Leaf-Spine Connectivity
     3) Management: Handle all of InBand and OutOfBand(OOB) Management Interfaces
+
+
+
+
+
+~~~~~~~~~~~~~~~~~ Describe the ACI Physical Model ~~~~~~~~~~~~~~~~
+** Physical Model Overview and Benefits
+  - The ACI Physical Model defines how physical policy is applied
+  - One great advantage of ACI is scaling to very large data centers
+  - ACI policy takes longer to create, but it is only done once
+
+
+** VLAN Pools and Domains
+    - VLAN Pools are how we we assign a group of VLANs to interfaces
+    - VLAN Pools can be Static or Dynamic and they are mapped to a domain
+    - Domains describe how an endpoint connects
+    - 5 Types of Domains:
+      1) Physical
+        - it's when we have a virtual host or bare-metal server type of application connected on a physical port
+      2) Virtual
+        - it will come from VMM(Virtual Machine Manager) Integration
+        - VMs will be part of Virtual Domain
+      3) External Bridged(L2)
+      4) External Routed(L3)
+      5) Fiber Channel
+        - Storage Area Networking(SAN) technology(i.e. it's gonna connect us to Storage Arrays)
+        - Cisco 9Ks support FCoE and FC
+
+
+** Interface Policies, Interface Policy Groups, and AAEPs
+  - Interface Polices
+    - configurations like cdp, lldp, speed, etc. on interface level
+
+  - Interface Policy Groups
+    - a set of Interface Policies inside a group
+    - Types of Interface Policy Groups:
+      1) Access
+        - Access port on the Edge 
+        - Single Interface Configuration that's going at the edge 
+      2) Port-Channel
+      3) Virtual Port-Channel(VPC)
+
+  - AAEP(Attachable Access Entity Profile)
+    - It will allow us to connect different objects(that we've created) such as domains to another object such as Interface Policy Groups(EPGs)
+
+
+
+
+** Interface and Switch Profiles
+  - Interface Profile
+    - it's essentially a template
+    - Interface Profiles map an Interface Policy Group to a range of interfaces
+
+  - Switch Profile
+    - Switch profiles map a set of Interface Profiles to a range of switches
+    - We can use an Interface Override to inject custom configuration
