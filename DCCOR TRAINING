@@ -1520,3 +1520,10 @@
   - Switch Profile
     - Switch profiles map a set of Interface Profiles to a range of switches
     - We can use an Interface Override to inject custom configuration
+
+
+~~~~~~~~~~~~~~~~~ Apply ACI Concepts ~~~~~~~~~~~~~~~~
+** Fabric Setup
+  - When setting up a fabric, we start by registring the switches
+  - We then configure BGP RRs, OOB Mgmt, NTP, DNS, etc
+  - We can validate our topology on the Fabric -> Topology Tab 
