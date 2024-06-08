@@ -1527,3 +1527,11 @@
   - When setting up a fabric, we start by registring the switches
   - We then configure BGP RRs, OOB Mgmt, NTP, DNS, etc
   - We can validate our topology on the Fabric -> Topology Tab 
+
+** ACI Fabric Routing
+  - IS-IS is used for routing across leaf-spine fabric
+  - VXLAN is used for L2 propagation, with COOP at the control plane
+  - BGP propagates learned routes to other leaf switches, spines are RRs(Route Reflectors)
+
+** Tenant and Access Policies
+  - 
