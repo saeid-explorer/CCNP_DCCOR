@@ -1534,4 +1534,6 @@
   - BGP propagates learned routes to other leaf switches, spines are RRs(Route Reflectors)
 
 ** Tenant and Access Policies
-  - 
+  - Tenant Policies are the ACI Logical Model policies
+  - Fabric Policies are used on the fabric connections
+  - Access Polices are the ACI Physical Model policies
