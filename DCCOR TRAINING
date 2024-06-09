@@ -1562,3 +1562,5 @@
   - Ways to identify the microsegmented EPGs
     - Network: IP/MAC
     - VM based attributes: VMM domain, OS, VM ID/Name, Custom Tags, ... 
+
+** Analyze Packet Flow
