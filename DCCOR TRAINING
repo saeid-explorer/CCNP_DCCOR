@@ -1563,4 +1563,16 @@
     - Network: IP/MAC
     - VM based attributes: VMM domain, OS, VM ID/Name, Custom Tags, ... 
 
-** Analyze Packet Flow
+
+
+
+~~~~~~~~~~~~~~~~~ Analyze Packet Flow ~~~~~~~~~~~~~~~~
+** Unicast Traffic
+   - Unicast Traffic is directed toward one destination
+   - Unicast traffic is forwarded according to the CAM (L2) or RIB (L3)
+   - Unknown Unicast is flooded at L2 and dropped at L3
+
+
+** Broadcast Traffic
+
+
