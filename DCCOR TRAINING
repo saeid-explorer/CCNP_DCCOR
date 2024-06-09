@@ -1551,3 +1551,14 @@
       - it's a Legacy option
       - Nexus 1000V
   - Traffic flow looks different for the different switching options
+
+
+** Microsegmentation in ACI
+  - Microsegmentation in ACI refers to granulated policy deployment
+  - Microsegmentation EPG
+    - specify VMs, and ACI pulls those VMs into the microsegmatation EPG
+    - VMM domains
+    - contracts can be built from the microsegmentation EPGs
+  - Ways to identify the microsegmented EPGs
+    - Network: IP/MAC
+    - VM based attributes: VMM domain, OS, VM ID/Name, Custom Tags, ... 
