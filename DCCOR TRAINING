@@ -1537,3 +1537,17 @@
   - Tenant Policies are the ACI Logical Model policies
   - Fabric Policies are used on the fabric connections
   - Access Polices are the ACI Physical Model policies
+
+
+** VMM(Virtual Machine Manager) Integration
+  - We integrate to a VMM from the APIC, leverages APIs for control 
+  - There are 3 ways for VMM Integration
+    1) Native
+      - VLAN
+    2) Application Virtual Edge(AVE)
+      - Cisco VS
+      - Virtual Leaf
+    3) Application Virtual Switch(AVS)
+      - it's a Legacy option
+      - Nexus 1000V
+  - Traffic flow looks different for the different switching options
