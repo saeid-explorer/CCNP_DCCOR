@@ -1578,3 +1578,15 @@
   - At L3, the broadcast address is the final address in the subnet, can be directed
   - At L2, the broadcast address is FFFF.FFFF.FFFF, lacks a TTL field
   - Storm Control can reduce the likelihood of broadcast storms in our data centers
+
+
+** Multicast Traffic
+  - L3 Multicast leverages PIM and multicast trees
+  - L2 Multicast is flooded by default, we use IGMP Snooping to prevent this
+  - Addressing is 224.0.0.0/4 for L3, and reserved MACs at L2
+
+
+** Anycast Traffic
+  - Anycast Traffic is destined toward a shared unicast address
+  - Anycast traffic will land on the "closest" host using that address
+  - Many use-cases for anycast, including RPs(Rendevouz Points) and Gateways
