@@ -1574,5 +1574,7 @@
 
 
 ** Broadcast Traffic
-
-
+  - Broadcast Traffic is delivered to all recipients in a L2 domain or L3 subnet
+  - At L3, the broadcast address is the final address in the subnet, can be directed
+  - At L2, the broadcast address is FFFF.FFFF.FFFF, lacks a TTL field
+  - Storm Control can reduce the likelihood of broadcast storms in our data centers
