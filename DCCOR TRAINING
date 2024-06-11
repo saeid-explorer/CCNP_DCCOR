@@ -1616,3 +1616,31 @@
         - we can use either ISSU or Enhanced ISSU
         - Software version should support Enhanced ISSU to be able to use it
         - Certain features may not support Enhanced ISSU
+
+
+** EPLDs and Patches
+  - Cisco Nexus Switches have individual line cards that have some programmable devices(microchips/ASICs)
+  - These ASICs are known as Electronic Programmable Logical Devices(EPLDs)
+  - Thses EPLDs can be upgraded
+  - NXoS also allows us to patch it 
+  - When we upgrade EPLDs, the Line card itself will go down
+  - Cisco doesn't recommend both EPLDs and NXoS at the same time
+  - In order to find the EPLD version on a specifc line card of a nexus switch:
+    - show version
+    - then we should see "module x epld". "x" is the version 
+  - In order to validate an EPLD image and see its impact after installation:
+    - show install all impact epld <image_name>
+  - To actually upgrading the EPLD:
+    - install epld <image_name> module <module_number>/all
+
+  - NxOS patches
+    - patches are in .rpm extension
+    - to install the patches
+      - install add <Image/Patch-file name>
+    - To activate an installed patch:
+      - install activate <image_name>
+      - install commit
+    - To deactivate an installed patch
+      - install deactivate <image_name>
+      - install commit
+    * Note: To finalize Patch installation, you need to reload the switch
