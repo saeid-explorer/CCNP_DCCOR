@@ -1644,3 +1644,74 @@
       - install deactivate <image_name>
       - install commit
     * Note: To finalize Patch installation, you need to reload the switch
+
+
+~~~~~~~~~~~~~~~~~ NX-OS Checkpoint Feature ~~~~~~~~~~~~~~~~
+- Provides the capability to capture at any time a snapshot/backup of the Cisco Nexus configuration before any changes
+- The captured configuration (checkpoint) can then be used to roll back and restore the original configuration
+* Limitations:
+  - maximum number of checkpoints supported: 10
+  - Checkpoints are stored in an internal repository not accessible by the common user
+  - It is not possible to apply or import the checkpoint file from another Nexus switch
+  - Checkpoints can only be used on the device they were created on
+  - Only one user at a time can perform a checkpoint, rollback, or copy of the running 
+    configuration to the startup configuration
+  - Checkpoints are cleared from the system’s database after executing the write erase or reload command (switch reload)
+  - Checkpoints can be manually cleared by running the clear checkpoint database command
+    The checkpoints saved to the bootflash are not affected by the aforementioned commands
+  - Checkpoints are only local to the NX-OS switch
+  - Rollback using files stored in bootflash is supported only if it has been created using the checkpoint command
+  - Checkpoint names must be unique
+  - You cannot overwrite previously saved checkpoints
+    If attempting to overwrite existing checkpoints the user will receive the following error: ERROR: ascii-cfg: 
+    Checkpoint Name already exists (err id 0x405F002B)
+  - Checkpoints are local to a virtual device context (VDC) for the Nexus 7000
+  - Rollback is not supported in the storage VDC for the Nexus 7000
+  - Rollback is not supported on the Nexus 5000 after enabling the FCoE feature
+* Creating a Checkpoint
+  - (e.g.):
+    - checkpoint Checkpoint-1 description *** Testing the checkpoint feature ***
+  - verify the creation and details of checkpoint:
+    - show checkpoint summary
+    - sample output:
+          User Checkpoint Summary
+          --------------------------------------------------------------------------------
+          1) Checkpoint-1:
+          Created by admin
+          Created at Mon, 08:10:29 22 May2023
+          Size is 15,568 bytes
+          Description: *** Testing the checkpoint feature ***
+
+
+* Automatic Checkpoint Creation
+  - Users can actually configure their Nexus switch to automatically generate checkpoints 
+    when specific changes occur in its running configuration
+  - Reasons that could trigger automated system checkpoints:
+    - License expiration of a feature
+    - Disabling a feature with the no feature command
+    - Removing an instance of a Layer 3 protocol
+  - system-generated checkpoint name convention has the format "system-fm-feature"
+
+* Backup Nexus Checkpoints – Exceeding The 10 Checkpoint Limit
+  - if you want to store more than 10 checkpoints, you can store checkpoint files in the bootflash
+  - storing the checkpoint in the bootflash:
+    - (e.g.): checkpoint file bootflash:Checkpoint-11
+
+* Clearing User & System Checkpoint database
+  - clear checkpoint database
+
+* Rollback Configuration
+  -  When executed, rollback will compare the running-configuration with the checkpoint and
+     make the necessary changes to the running configuration so that they become identical
+  -  Network-admin user privileges are required to configure rollback
+  - to review the differences between the running-config and a checkpoint before applying the rollback command:
+      - (e.g.) show diff rollback-patch running-config checkpoint Checkpoint-1
+  - Rollback command options:
+    - Atomic: the default rollback type and applies the rollback file only if no errors occur (Nexus 3K, 5K, 7K, 9K)
+    - Verbose: displays the execution log and allows the user to see the applied configuration (Nexus 5K, 7K, 9K)
+    - Best-effort: Implement a rollback and skip any errors
+    - Stop-at-first-failure: Implement a rollback that stops if an error occurs
+    - Rollback to a specific Checkpoint:
+      - (e.g.): rollback running-config checkpoint Checkpoint-1 atomic
+    - to rollback using a Checkpoint file located in the system’s bootflash
+      - (e.g.): rollback running-config file bootflash:///Checkpoint-11
