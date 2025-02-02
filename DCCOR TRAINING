@@ -1735,3 +1735,43 @@
   - show system poap
 * POAP Configuration Script
   - A complete POAP script can be found at https://github.com/datacenter/nexus9000/blob/master/nx-os/poap/poap.py
+
+
+~~~~~~~~~~~~~~~~~ Implement Data Center Monitoring Tools ~~~~~~~~~~~~~~~~
+* NetFlow
+  - Netflow collects data from traffic flows, and it exports the data
+  - Nexus switches can leverage Flexible Netflow (FNF)(Netflow v.9)
+  - Netflow configuration consists of Records, Exporters, and Monitors
+  - Configuring Netflow(e.g):
+    - feature netflow
+    - flow record Test-Record
+        - description Test Record
+        - match ip protocol
+        - match ipv4 destination address
+        - match ipv4 source address
+        - collect ip version
+        - collect transport tcp fl ags
+        - exit
+    - flow exporter Test-Exporter
+        - description Test Exporter
+        - version 9
+        - exit
+        - destination 1.2.3.4 use-vrf default
+        - source eth 1/4
+        - transport udp 500
+        - dscp 8
+    - flow monitor Test-Monitor
+        - description Test Monitor
+        - record Test-Record
+        - exporter Test-Exporter
+        - exit
+    - int eth 1/1-2
+        - ip flow monitor Test-Monitor input
+
+
+  - Verifying Netflow config(e.g):
+    - show flow interface eth 1/1
+    - show flow record Test-Record
+    - show flow exporter Test-Exporter
+
+
