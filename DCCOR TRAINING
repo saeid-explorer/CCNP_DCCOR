@@ -1715,3 +1715,23 @@
       - (e.g.): rollback running-config checkpoint Checkpoint-1 atomic
     - to rollback using a Checkpoint file located in the system’s bootflash
       - (e.g.): rollback running-config file bootflash:///Checkpoint-11
+
+
+
+~~~~~~~~~~~~~~~~~ PowerOn Auto Provisioning (POAP) ~~~~~~~~~~~~~~~~
+- POAP automates the process of upgrading software images and installing configuration files on Cisco Nexus switches
+- Only works if there is no startup configuration present
+- POAP checks USB first, then moves to the network to attain a script
+- Once POAP has the script(Python), it upgrades the image and applies the config
+* Network Requirements for POAP
+  - A DHCP server to bootstrap the interface IP address, gateway address, DNS server, and log server
+  - A TFTP or HTTP server containing the configuration script used to automate the software image installation and configuration process
+  - One or more servers containing the desired software images and configuration files
+* Disabling POAP
+  - system no poap
+* Enabling POAP
+  - system no poap
+* Verifying POAP status
+  - show system poap
+* POAP Configuration Script
+  - A complete POAP script can be found at https://github.com/datacenter/nexus9000/blob/master/nx-os/poap/poap.py
