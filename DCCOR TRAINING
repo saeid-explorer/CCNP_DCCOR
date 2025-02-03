@@ -1812,3 +1812,14 @@
         - erspan-id 100
         - vrf default
         - no shut
+
+
+~~~~~~~~~~~~~~~~~ NX-API ~~~~~~~~~~~~~~~~
+- NX-API provides HTTP programmatic access to the switch
+- Commands are sent in the HTTP POST body
+- Supported formats: XML, JSON or JSON-RPC
+- Feature is disabled by default
+- This Feature can be enabled with "Feature nxapi"
+- Defaults to HTTPs only, HTTP has to be enabled if desired
+- Workflow:
+  - NX-API Client -> NGINX Server -> NX-API Server
